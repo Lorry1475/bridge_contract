@@ -1,0 +1,41 @@
+{
+  "name": "eth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "node": "npx hardhat node",
+    "test": "npx hardhat test --show-stack-traces --network localhost",
+    "deploy": "npx hardhat run scripts/deploy.js --network localhost",
+    "drand": "node test/drand.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chain-Bridge/eth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chain-Bridge/eth/issues"
+  },
+  "homepage": "https://github.com/Chain-Bridge/eth#readme",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.4",
+    "hardhat": "^2.7.0"
+  },
+  "dependencies": {
+    "@noble/bls12-381": "^1.2.0",
+    "@openzeppelin/contracts": "^4.4.1",
+    "@poanet/solidity-flattener": "^3.0.6",
+    "assert": "^2.0.0",
+    "bignumber.js": "^9.0.1",
+    "drand-client": "^0.2.0",
+    "ethereumjs-util": "^7.1.3"
+  }
+}

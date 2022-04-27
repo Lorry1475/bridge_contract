@@ -1,0 +1,137 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "previousAdmin",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "AdminChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beacon",
+						"type": "address"
+					}
+				],
+				"name": "BeaconUpgraded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "implementation",
+						"type": "address"
+					}
+				],
+				"name": "Upgraded",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"AdminChanged(address,address)": {
+					"details": "Emitted when the admin account has changed."
+				},
+				"BeaconUpgraded(address)": {
+					"details": "Emitted when the beacon is upgraded."
+				},
+				"Upgraded(address)": {
+					"details": "Emitted when the implementation is upgraded."
+				}
+			},
+			"kind": "dev",
+			"methods": {},
+			"stateVariables": {
+				"_ADMIN_SLOT": {
+					"details": "Storage slot with the admin of the contract. This is the keccak-256 hash of \"eip1967.proxy.admin\" subtracted by 1, and is validated in the constructor."
+				},
+				"_BEACON_SLOT": {
+					"details": "The storage slot of the UpgradeableBeacon contract which defines the implementation for this proxy. This is bytes32(uint256(keccak256('eip1967.proxy.beacon')) - 1)) and is validated in the constructor."
+				},
+				"_IMPLEMENTATION_SLOT": {
+					"details": "Storage slot with the address of the current implementation. This is the keccak-256 hash of \"eip1967.proxy.implementation\" subtracted by 1, and is validated in the constructor."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tool/bridge/tec/eth/contract/ERC1967Upgrade.sol": "ERC1967Upgrade"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"tool/bridge/tec/eth/contract/ERC1967Upgrade.sol": {
+			"keccak256": "0x7d925582b5dd24879e81838e11d49c238a2e5840b76c0902b32791c68a21694f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e06337793f5b5bab062c07d5a57e156d55439efd6ca515160f5ea8addd8e987a",
+				"dweb:/ipfs/QmbppGS5kBhqYjErKw9f7r62uHueBnB4zLberLfp1v37VY"
+			]
+		},
+		"tool/bridge/tec/eth/contract/interface/IBeacon.sol": {
+			"keccak256": "0x69e09c6f079130e3608a163b7589a29baccdb4fc9a3b1f8b437c08e2e35395c0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d51b01c145cb8b76ae809b2688272da628f74ddc2526502fcbc5da0b2d1c138f",
+				"dweb:/ipfs/QmWHJjhBKbWWNwewrxVSgFWyLPW3PEBxkHbzy9B8r2onEM"
+			]
+		},
+		"tool/bridge/tec/eth/contract/library/Address.sol": {
+			"keccak256": "0xc1202fa69783cb3ea0d87f178cab5e1f3a77de7fc0dff3c47f668f3cd65d9273",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ea8da5de19a08cffb966c1ea9925cd263470a91a65c5cdca9cbc8dfb669dd775",
+				"dweb:/ipfs/QmeeDjQ1dPUmQ9CuU77tEYghszLVagP1xoraQJAQJF7Mm3"
+			]
+		},
+		"tool/bridge/tec/eth/contract/library/StorageSlot.sol": {
+			"keccak256": "0x8b11be685cb1f1a574707f89190beac61ade63e30a1b98aca146b29f0e6b3e50",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6d128b68c41e2f9007bafd39531ba1f1798587ac5760ca9da0440fe7c35d2315",
+				"dweb:/ipfs/QmatXLGSAw6UM69g46qbxVbaCsCH6mEHqkanDCR2KpH9Yo"
+			]
+		}
+	},
+	"version": 1
+}

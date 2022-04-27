@@ -1,0 +1,626 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_member",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "nonce",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "blockNumber",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "fromAsset",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "toAsset",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "to",
+						"type": "string"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "proposeId",
+						"type": "uint256"
+					}
+				],
+				"name": "ProposeEvent",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "EthAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "Mock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "accountLockout",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "accountNonce",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newMember",
+						"type": "address"
+					}
+				],
+				"name": "accountUnlock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_erc20token",
+						"type": "address"
+					}
+				],
+				"name": "addErc20Asset",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_erc20",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "addLiquidity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_proposed",
+						"type": "uint256"
+					}
+				],
+				"name": "agreement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "assetTable",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "challengingPeriod",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "change",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "committee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "committeeNum",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_erc20token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_tokenCanister",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_icwallet",
+						"type": "string"
+					}
+				],
+				"name": "depositErc20Token",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_tokenCanister",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_icwallet",
+						"type": "string"
+					}
+				],
+				"name": "depositEth",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "getAccountNonce",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_proposed",
+						"type": "uint256"
+					}
+				],
+				"name": "getPropose",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "promoter",
+								"type": "address"
+							},
+							{
+								"internalType": "address[]",
+								"name": "seconder",
+								"type": "address[]"
+							},
+							{
+								"internalType": "bool",
+								"name": "excuted",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "revoke",
+								"type": "bool"
+							},
+							{
+								"internalType": "bytes",
+								"name": "transactions",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct Sequencer.Propose",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getProposeTotal",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "members",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "minimum",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "bridgeBlock",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "block",
+								"type": "bytes"
+							},
+							{
+								"components": [
+									{
+										"internalType": "bytes",
+										"name": "sign",
+										"type": "bytes"
+									},
+									{
+										"internalType": "address",
+										"name": "signAddress",
+										"type": "address"
+									}
+								],
+								"internalType": "struct BridgeLibrary.CommitteeSign[]",
+								"name": "committeeSigns",
+								"type": "tuple[]"
+							}
+						],
+						"internalType": "struct BridgeLibrary.Rollup",
+						"name": "_rollup",
+						"type": "tuple"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "open",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_proposed",
+						"type": "uint256"
+					}
+				],
+				"name": "revoke",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_erc20",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_erc20",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"Deposit(address,uint256,uint256,uint256,address,string,string)": {
+					"details": "Token transfer event",
+					"params": {
+						"amount": "is  Number of token transfers",
+						"blockNumber": "is  Block number of the current event",
+						"from": "is  Token sender address, which is the standard Ethereum network account address",
+						"fromAsset": "is  The standard erc20 address that needs to be transferred out is transferred from Ethereum network to dfinity network",
+						"to": "is The token needs to be transferred to the wallet account of dfinity network",
+						"toAsset": "is Dfinity network target Token address"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"depositErc20Token(address,uint256,string,string)": {
+					"details": "Transfer the standard erc20 token on Ethereum to the dfinity network",
+					"params": {
+						"_amount": "is Number of erc20 tokens to be transferred",
+						"_erc20token": "is Erc20 token address to be transferred",
+						"_icwallet": "is the destination wallet address of the dfinity network",
+						"_tokenCanister": "is the destination token address of the dfinity network"
+					}
+				},
+				"depositEth(string,string)": {
+					"details": "Transfer etheum main network token eth, which will flow from etheum to dfinity network through bridge network",
+					"params": {
+						"_icwallet": "is the destination wallet address of the dfinity network",
+						"_tokenCanister": "is the destination token address of the dfinity network"
+					}
+				}
+			},
+			"stateVariables": {
+				"accountLockout": {
+					"details": "Members of the Governance Committee, who will undertake the token transfer verification between two different networks, dfinity and Ethereum"
+				},
+				"minAmount": {
+					"details": "Minimum token transfer quantity"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tool/bridge/tec/eth/contract/bridgeV1.2.sol": "BridgeV12"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"tool/bridge/tec/eth/contract/bridgeV1.2.sol": {
+			"keccak256": "0xc6436f956e398976ed8cb2beb953b94b7caecb30a2434dc098ea43f91528c30f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e1591d116e1038e3646833ad650ce31b2868d9cda68b5b96ee91392d1c098f8e",
+				"dweb:/ipfs/QmSzNiBWwQJ7XRYpzaAhFtRAGpEcSabYgooGgLzqKuAgGm"
+			]
+		}
+	},
+	"version": 1
+}

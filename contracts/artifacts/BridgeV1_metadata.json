@@ -1,0 +1,562 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "networkid",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "nonce",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "blockNumber",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "fromAsset",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "toAsset",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "to",
+						"type": "string"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "EthAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "account",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "accountLockout",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "accountNonce",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "networkid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "erc20",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "token",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "symbol",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "decimal",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "exist",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct BridgeV1.Asset",
+						"name": "asset",
+						"type": "tuple"
+					}
+				],
+				"name": "addAsset",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "networkid",
+						"type": "uint256"
+					}
+				],
+				"name": "addNetWork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "assetPipeline",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "token",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "decimal",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "exist",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "assetTable",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "committee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isMember",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "committeeNum",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "denominator",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_erc20token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "networkid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "wallet",
+						"type": "string"
+					}
+				],
+				"name": "depositErc20Token",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "networkid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "wallet",
+						"type": "string"
+					}
+				],
+				"name": "depositEth",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "getAccountNonce",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "getFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "molecule",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "network",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "uniswapPair",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "uniswapTokens",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "token0",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "token1",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"Deposit(address,uint256,uint256,uint256,uint256,address,string,string)": {
+					"details": "Token transfer event",
+					"params": {
+						"amount": "is  Number of token transfers",
+						"blockNumber": "is  Block number of the current event",
+						"from": "is  Token sender address, which is the standard Ethereum network account address",
+						"fromAsset": "is  The standard erc20 address that needs to be transferred out is transferred from Ethereum network to dfinity network",
+						"networkid": "network",
+						"nonce": "is accout nonce",
+						"to": "is The token needs to be transferred to the wallet account of dfinity network",
+						"toAsset": "is Dfinity network target Token address"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"depositErc20Token(address,uint256,uint256,string)": {
+					"details": "Transfer the standard erc20 token on Ethereum to the dfinity network",
+					"params": {
+						"_amount": "is Number of erc20 tokens to be transferred",
+						"_erc20token": "is Erc20 token address to be transferred",
+						"wallet": "is the destination wallet address of the other network"
+					}
+				},
+				"depositEth(uint256,string)": {
+					"details": "Transfer etheum main network token eth, which will flow from etheum to dfinity network through bridge network",
+					"params": {
+						"wallet": "is the destination wallet address of the other network"
+					}
+				}
+			},
+			"stateVariables": {
+				"committee": {
+					"details": "Members of the Governance Committee, who will undertake the token transfer verification between two different networks, dfinity and Ethereum"
+				},
+				"minAmount": {
+					"details": "Minimum token transfer quantity"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tool/bridge/tec/bridge_contract/bridge_contract/contracts/bridgeV1.sol": "BridgeV1"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"tool/bridge/tec/bridge_contract/bridge_contract/contracts/bridgeV1.sol": {
+			"keccak256": "0x95999ca9083a67377e88621de534ee76ba3e02a83e401303c96eddf231564d04",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7c958849b3b99cd24f0a113080161404fd5862ef38008d104236866893c8afc4",
+				"dweb:/ipfs/QmUpGF5wURTn962V5LVd3z9szsdEpigL4m7j629XW9oYoz"
+			]
+		},
+		"tool/bridge/tec/bridge_contract/bridge_contract/contracts/interface/IERC20.sol": {
+			"keccak256": "0x55c63bfb97bb854428fb14e7980d6360e2a3aefe836355be348b8fee247f6077",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6617963a2f4ee5c937cb120fab843149b965a4eaf6102560684c3e351faf269d",
+				"dweb:/ipfs/Qmf95ptPWPe8CYn292qj82cgsz8eARhp8j2jqBgpXjTcmA"
+			]
+		},
+		"tool/bridge/tec/bridge_contract/bridge_contract/contracts/interface/IUniswap.sol": {
+			"keccak256": "0x475794a813d00b73facf35644643377f956c107c5dda52a1336b7813c8e8d028",
+			"urls": [
+				"bzz-raw://6fe13bb44e24e965c084b44b6d25ab420443baea02b90ee42be2c2fdcbac2274",
+				"dweb:/ipfs/QmUV8DgCBAq1QrpNrUsjv2B5MvGBDECMTre3WEUtHX84Ej"
+			]
+		},
+		"tool/bridge/tec/bridge_contract/bridge_contract/contracts/library/BridgeLibraryV1.sol": {
+			"keccak256": "0x0380cac02536a2102107b76c09db78d5f2091dcc5487a9b621f2a955150aa6ee",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8690c386d1b392794dfa86c1b4dacdfff1465f442503e824ff7382249cb9dc0b",
+				"dweb:/ipfs/QmW7CPvmpXXr4U2idim18AgxySkz47ZcZuoLEmD3cQdQAZ"
+			]
+		}
+	},
+	"version": 1
+}

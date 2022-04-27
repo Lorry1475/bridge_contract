@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tool/bridge/tec/eth/contract/modexp.sol": "modexp_3064_fd54"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"tool/bridge/tec/eth/contract/modexp.sol": {
+			"keccak256": "0x693c7d83168674490ed60de9f78c0bb0fe5f29fc94e51f0d4b309a10a973009e",
+			"urls": [
+				"bzz-raw://5173ad37532a530fa590b86e8058f3cf89cf51fa5b6ccd28cff07e3393e4c956",
+				"dweb:/ipfs/QmfEgYkNRmDB5PbKV9K9xgGgM44ovhru1jaXLmKfNkpKsN"
+			]
+		}
+	},
+	"version": 1
+}

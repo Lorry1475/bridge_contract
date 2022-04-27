@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.7.0+commit.9e61f92b"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"eth/contract/library/BridgeLibrary2.sol": "BridgeLibrary2"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"eth/contract/library/BridgeLibrary2.sol": {
+			"keccak256": "0x6750733300ab1db08aca42bd3d0d6ad48b7463ba39e17846adc6910dd6c2340d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://51f33535616f27bc397ed3a73fc1eedf21c1c8daf4f06742b973881de5ea3f16",
+				"dweb:/ipfs/QmPpeqV3gWg4a6Y4tVXwEtMQFXJtNcFWb5vrDcQR3ioKDo"
+			]
+		}
+	},
+	"version": 1
+}

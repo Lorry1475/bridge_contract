@@ -1,0 +1,51 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contract/BLS.sol": "BLS"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contract/BLS.sol": {
+			"keccak256": "0x581407e807cdb1944fa927083fb6ce356d7547289d185c8bbc0a8f378e97c757",
+			"urls": [
+				"bzz-raw://d392ca5e5dc4445798ae473bbe957b26f1ce6942d494eb19c80a0cfe886921a9",
+				"dweb:/ipfs/QmbYpQGLwikHK3K6K1HwARog4ArTar2WokxP919tXfWwGT"
+			]
+		},
+		"contract/modexp.sol": {
+			"keccak256": "0x693c7d83168674490ed60de9f78c0bb0fe5f29fc94e51f0d4b309a10a973009e",
+			"urls": [
+				"bzz-raw://5173ad37532a530fa590b86e8058f3cf89cf51fa5b6ccd28cff07e3393e4c956",
+				"dweb:/ipfs/QmfEgYkNRmDB5PbKV9K9xgGgM44ovhru1jaXLmKfNkpKsN"
+			]
+		}
+	},
+	"version": 1
+}

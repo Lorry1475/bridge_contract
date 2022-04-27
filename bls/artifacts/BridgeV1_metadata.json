@@ -1,0 +1,382 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_member",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "blockNumber",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "targetErc20TokenAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "tokenCanister",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "icwallet",
+						"type": "string"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "EthAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newMember",
+						"type": "address"
+					}
+				],
+				"name": "accountLock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "accountLockout",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newMember",
+						"type": "address"
+					}
+				],
+				"name": "accountUnlock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newMember",
+						"type": "address"
+					}
+				],
+				"name": "addCommittee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_erc20token",
+						"type": "address"
+					}
+				],
+				"name": "addErc20Asset",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "assetTable",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "committee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isMember",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "committeeNum",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_erc20token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_tokenCanister",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_icwallet",
+						"type": "string"
+					}
+				],
+				"name": "depositErc20Token",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_tokenCanister",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_icwallet",
+						"type": "string"
+					}
+				],
+				"name": "depositEth",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes",
+								"name": "pool",
+								"type": "bytes"
+							},
+							{
+								"components": [
+									{
+										"internalType": "bytes",
+										"name": "sign",
+										"type": "bytes"
+									},
+									{
+										"internalType": "address",
+										"name": "signAddress",
+										"type": "address"
+									}
+								],
+								"internalType": "struct BridgeLibraryV1.CommitteeSign[]",
+								"name": "committeeSigns",
+								"type": "tuple[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "bridgeBlock",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct BridgeLibraryV1.Rollup",
+						"name": "_rollup",
+						"type": "tuple"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"Deposit(address,uint256,uint256,address,string,string)": {
+					"details": "Token transfer event",
+					"params": {
+						"amount": "is  Number of token transfers",
+						"blockNumber": "is  Block number of the current event",
+						"icwallet": "is The token needs to be transferred to the wallet account of dfinity network",
+						"sender": "is  Token sender address, which is the standard Ethereum network account address",
+						"targetErc20TokenAddress": "is  The standard erc20 address that needs to be transferred out is transferred from Ethereum network to dfinity network",
+						"tokenCanister": "is Dfinity network target Token address"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"depositErc20Token(address,uint256,string,string)": {
+					"details": "Transfer the standard erc20 token on Ethereum to the dfinity network",
+					"params": {
+						"_amount": "is Number of erc20 tokens to be transferred",
+						"_erc20token": "is Erc20 token address to be transferred",
+						"_icwallet": "is the destination wallet address of the dfinity network",
+						"_tokenCanister": "is the destination token address of the dfinity network"
+					}
+				},
+				"depositEth(string,string)": {
+					"details": "Transfer etheum main network token eth, which will flow from etheum to dfinity network through bridge network",
+					"params": {
+						"_icwallet": "is the destination wallet address of the dfinity network",
+						"_tokenCanister": "is the destination token address of the dfinity network"
+					}
+				}
+			},
+			"stateVariables": {
+				"committee": {
+					"details": "Members of the Governance Committee, who will undertake the token transfer verification between two different networks, dfinity and Ethereum"
+				},
+				"minAmount": {
+					"details": "Minimum token transfer quantity"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tool/bridge/tec/eth/contract/bridgeV1.sol": "BridgeV1"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"tool/bridge/tec/eth/contract/bridgeV1.sol": {
+			"keccak256": "0x26c754f827388b6f691c65ae56c2f8b583f7b19c356ec6b65c0fe5294c02b726",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://68cb87056af16e18c85c5254f2c78b91062089342fe27e72d03b8f9acaa40ef7",
+				"dweb:/ipfs/QmbcRLY8wsr5WvNaWuhGXrgagYZDcFbNciAenknPq2KzQb"
+			]
+		},
+		"tool/bridge/tec/eth/contract/interface/IERC20.sol": {
+			"keccak256": "0x55c63bfb97bb854428fb14e7980d6360e2a3aefe836355be348b8fee247f6077",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6617963a2f4ee5c937cb120fab843149b965a4eaf6102560684c3e351faf269d",
+				"dweb:/ipfs/Qmf95ptPWPe8CYn292qj82cgsz8eARhp8j2jqBgpXjTcmA"
+			]
+		},
+		"tool/bridge/tec/eth/contract/library/BridgeLibraryV1.sol": {
+			"keccak256": "0x994743a65e92d7b36fd132c8ed05b79cf6b79fd835471846ff9537ea036c988e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://94b08a2ca5a7c3925769e579bcebb0d17128bf147657ee58db9590c776208916",
+				"dweb:/ipfs/QmP7YRNuCHr8MMRdKbgvx9Vh8UK7YYwD7AcxrsQQnCcYy2"
+			]
+		}
+	},
+	"version": 1
+}

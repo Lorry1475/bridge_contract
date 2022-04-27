@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tool/bridge/tec/eth/contracts/bridgeV1.sol": "BridgeLibraryV1"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"tool/bridge/tec/eth/contracts/bridgeV1.sol": {
+			"keccak256": "0xef64472508bacb62384670f04442ef289b0224bbe571bc4522286adc4adb4a87",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d4bdc4068f0268637a122aa36186173dcd2effd15778c9b2fef5c4e4fcf51add",
+				"dweb:/ipfs/QmV55UxHbNFEmKs7b2LusRJN1QTjh5suK435ycjC4W3d1r"
+			]
+		}
+	},
+	"version": 1
+}

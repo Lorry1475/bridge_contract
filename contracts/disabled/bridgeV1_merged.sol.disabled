@@ -1,0 +1,413 @@
+pragma solidity ^0.8.0;
+
+
+// SPDX-License-Identifier: MIT
+// OpenZeppelin Contracts v4.4.0 (token/ERC20/IERC20.sol)
+/**
+ * @dev Interface of the ERC20 standard as defined in the EIP.
+ */
+interface IERC20 {
+    /**
+     * @dev Returns the amount of tokens in existence.
+     */
+    function totalSupply() external view returns (uint256);
+
+    /**
+     * @dev Returns the amount of tokens owned by `account`.
+     */
+    function balanceOf(address account) external view returns (uint256);
+
+    /**
+     * @dev Moves `amount` tokens from the caller's account to `recipient`.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transfer(address recipient, uint256 amount) external returns (bool);
+
+    /**
+     * @dev Returns the remaining number of tokens that `spender` will be
+     * allowed to spend on behalf of `owner` through {transferFrom}. This is
+     * zero by default.
+     *
+     * This value changes when {approve} or {transferFrom} are called.
+     */
+    function allowance(address owner, address spender) external view returns (uint256);
+
+    /**
+     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * IMPORTANT: Beware that changing an allowance with this method brings the risk
+     * that someone may use both the old and the new allowance by unfortunate
+     * transaction ordering. One possible solution to mitigate this race
+     * condition is to first reduce the spender's allowance to 0 and set the
+     * desired value afterwards:
+     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+     *
+     * Emits an {Approval} event.
+     */
+    function approve(address spender, uint256 amount) external returns (bool);
+
+    /**
+     * @dev Moves `amount` tokens from `sender` to `recipient` using the
+     * allowance mechanism. `amount` is then deducted from the caller's
+     * allowance.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transferFrom(
+        address sender,
+        address recipient,
+        uint256 amount
+    ) external returns (bool);
+
+    /**
+     * @dev Emitted when `value` tokens are moved from one account (`from`) to
+     * another (`to`).
+     *
+     * Note that `value` may be zero.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    /**
+     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
+     * a call to {approve}. `value` is the new allowance.
+     */
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
+// SPDX-License-Identifier: MIT
+library BridgeLibraryV1 {
+    struct Transaction {
+        uint256 amount;
+        address payable account;
+        address erc20Token;
+    }
+    struct CommitteeSign {
+        bytes sign;
+        address signAddress;
+    }
+    struct Rollup {
+        bytes pool;
+        CommitteeSign[] committeeSigns;
+        uint256 bridgeBlock;
+    }
+
+    function getSaltHash(bytes memory salt)
+        internal
+        pure
+        returns (bytes32)
+    {
+
+        bytes32 saltHash = keccak256(salt);
+        return saltHash;
+    }
+
+    function getRollupHash(Rollup memory _rollup,bytes memory salt)
+        internal
+        pure
+        returns (bytes32)
+    {
+        bytes32 saltHash = getSaltHash(salt);
+        bytes32 rollupHash = keccak256(
+            abi.encode(saltHash, _rollup.bridgeBlock,_rollup.pool)
+        );
+        return rollupHash;
+    }
+
+    function verificationRollup(Rollup memory _rollup,bytes memory salt)
+        internal
+        pure
+        returns (bool)
+    {
+        bytes32 rollupHash = getRollupHash(_rollup,salt);
+
+        for (uint256 i = 0; i < _rollup.committeeSigns.length; i++) {
+            bool effectiveness = isValidSignature(
+                rollupHash,
+                _rollup.committeeSigns[i].signAddress,
+                _rollup.committeeSigns[i].sign
+            );
+            if (!effectiveness) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function isValidSignature(
+        bytes32 _hash,
+        address _user,
+        bytes memory _sign
+    ) internal pure returns (bool) {
+        bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+        _hash = keccak256(abi.encodePacked(prefix, _hash));
+        bytes32 r;
+        bytes32 s;
+        uint8 v;
+        assembly {
+            let temp := mload(0)
+            let temp2 := mload(32)
+            let temp3 := mload(64)
+            r := mload(add(_sign, 32))
+            s := mload(add(_sign, 64))
+            v := and(mload(add(_sign, 65)), 255)
+            mstore(0, temp)
+            mstore(32, temp2)
+            mstore(64, temp3)
+        }
+        if (v < 27) {
+            v += 27;
+        }
+        address _recover = ecrecover(_hash, v, r, s);
+        return (_user == _recover);
+    }
+
+
+    function isContract(address account) internal view returns (bool) {
+        uint256 size;
+        assembly {
+            size := extcodesize(account)
+        }
+        return size > 0;
+    }
+}
+
+// SPDX-License-Identifier: MIT
+contract BridgeV1 {
+    bool isInit = false;
+    bool lock = false;
+    uint256 public committeeNum = 0;
+    address public EthAddress = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+    /// @dev Minimum token transfer quantity
+    uint256 minAmount = 1;
+    bytes private salt = "v1.0";
+    /// @dev Members of the Governance Committee,
+    /// who will undertake the token transfer verification between two different networks, dfinity and Ethereum
+    mapping(address => BridgeAccount) public committee;
+    mapping(address => bool) public accountLockout;
+    mapping(address => bool) public assetTable;
+    mapping(address => uint256) public account;
+    mapping(address => LedgerInfo) public ic_asset;
+    mapping(address => uint256) public accountNonce;
+    /// @dev Token transfer event
+    /// @param from is  Token sender address, which is the standard Ethereum network account address
+    /// @param amount is  Number of token transfers
+    /// @param blockNumber is  Block number of the current event
+    /// @param fromAsset is  The standard erc20 address that needs to be transferred out is transferred from Ethereum network to dfinity network
+    /// @param toAsset is Dfinity network target Token address
+    /// @param to is The token needs to be transferred to the wallet account of dfinity network
+    event Deposit(
+        address from,
+        uint256 amount,
+        uint256 nonce,
+        uint256 blockNumber,
+        address fromAsset,
+        string toAsset,
+        string to
+    );
+
+    struct BridgeAccount {
+        uint256 index;
+        bool isMember;
+    }
+
+    struct EthToLedger {
+        address erc20;
+        string ledgerCanister;
+    }
+    struct LedgerInfo {
+        string ledgerCanister;
+        bool exist;
+    }
+    struct TxPool {
+        uint256 amount;
+        address payable account;
+        address erc20Token;
+    }
+    modifier Sender() {
+        require(
+            !BridgeLibraryV1.isContract(msg.sender),
+            "Contract not supported"
+        );
+        _;
+    }
+
+    modifier Lock() {
+        require(!lock, "locking");
+        lock = true;
+        _;
+        lock = false;
+    }
+
+    constructor(address[] memory _member) {
+        for (uint256 i = 0; i < _member.length; i++) {
+            if (!committee[_member[i]].isMember) {
+                committee[_member[i]] = BridgeAccount(committeeNum, true);
+                committeeNum++;
+            }
+        }
+    }
+
+    function init(EthToLedger[] memory _ic_table) public {
+        require(!isInit, "Already initialized");
+        for (uint256 i = 0; i < _ic_table.length; i++) {
+            ic_asset[_ic_table[i].erc20] = LedgerInfo(
+                _ic_table[i].ledgerCanister,
+                true
+            );
+        }
+        isInit = true;
+    }
+
+    /// @dev Transfer etheum main network token eth, which will flow from etheum to dfinity network through bridge network
+    /// @param _icwallet is the destination wallet address of the dfinity network
+    function depositEth(string memory _icwallet) public payable Sender {
+        require(ic_asset[EthAddress].exist, "No longer on balance sheet");
+        require(msg.value > minAmount, "Too little deposit");
+        uint256 nonce = increaseNonce(msg.sender);
+        emit Deposit(
+            msg.sender,
+            msg.value,
+            nonce,
+            block.number,
+            EthAddress,
+            ic_asset[EthAddress].ledgerCanister,
+            _icwallet
+        );
+    }
+
+    /// @dev Transfer the standard erc20 token on Ethereum to the dfinity network
+    /// @param _erc20token is Erc20 token address to be transferred
+    /// @param _amount is Number of erc20 tokens to be transferred
+    /// @param _icwallet is the destination wallet address of the dfinity network
+    function depositErc20Token(
+        IERC20 _erc20token,
+        uint256 _amount,
+        string memory _icwallet
+    ) public Sender {
+        require(
+            ic_asset[address(_erc20token)].exist,
+            "No longer on balance sheet"
+        );
+        require(_amount > minAmount, "Too little deposit");
+        require(assetTable[address(_erc20token)], "Unopened asset Bridge");
+        require(
+            _erc20token.transferFrom(msg.sender, address(this), _amount),
+            "TransferFrom failed"
+        );
+        uint256 nonce = increaseNonce(msg.sender);
+        emit Deposit(
+            msg.sender,
+            _amount,
+            nonce,
+            block.number,
+            address(_erc20token),
+            ic_asset[address(_erc20token)].ledgerCanister,
+            _icwallet
+        );
+    }
+
+    function getPool(bytes memory _data)
+        internal
+        pure
+        returns (TxPool[] memory)
+    {
+        TxPool[] memory pool = abi.decode(_data, (TxPool[]));
+        return pool;
+    }
+
+    ///
+
+    function mint(BridgeLibraryV1.Rollup memory _rollup) public Lock {
+        require(committee[msg.sender].isMember, "Invalid operator");
+        (bool res, string memory info) = addressVerification(_rollup);
+        require(res, info);
+        bool verif = BridgeLibraryV1.verificationRollup(_rollup, salt);
+        require(verif, "Invalid signature");
+        TxPool[] memory pool = getPool(_rollup.pool);
+        for (uint256 i = 0; i < pool.length; i++) {
+            if (pool[i].erc20Token == EthAddress) {
+                require(
+                    address(this).balance < pool[i].amount,
+                    "Insufficient eth tokens"
+                );
+                pool[i].account.transfer(pool[i].amount);
+                continue;
+            }
+            require(
+                assetTable[address(pool[i].erc20Token)],
+                "Unopened asset Bridge"
+            );
+            require(
+                IERC20(pool[i].erc20Token).transfer(
+                    pool[i].account,
+                    pool[i].amount
+                ),
+                "Transfer failed"
+            );
+        }
+    }
+
+    function addCommittee(address _newMember) public {
+        require(!committee[_newMember].isMember, "Already exists");
+        committee[_newMember] = BridgeAccount(committeeNum, true);
+        committeeNum++;
+    }
+
+    function accountLock(address _newMember) public {
+        require(
+            !accountLockout[_newMember] && committee[_newMember].isMember,
+            "Locked"
+        );
+        accountLockout[_newMember] = true;
+        committeeNum--;
+    }
+
+    function accountUnlock(address _newMember) public {}
+
+    function addressVerification(BridgeLibraryV1.Rollup memory _rollup)
+        internal
+        view
+        returns (bool, string memory)
+    {
+        if (_rollup.committeeSigns.length < (committeeNum * 2) / 3 + 1) {
+            return (false, "Insufficient number of member approvals");
+        }
+        bool[] memory blucket = new bool[](committeeNum);
+
+        for (uint256 i = 0; i < _rollup.committeeSigns.length; i++) {
+            if (!committee[_rollup.committeeSigns[i].signAddress].isMember) {
+                return (false, "Invalid signer");
+            }
+            if (
+                blucket[committee[_rollup.committeeSigns[i].signAddress].index]
+            ) {
+                return (false, "Duplicate address");
+            }
+
+            blucket[
+                committee[_rollup.committeeSigns[i].signAddress].index
+            ] = true;
+        }
+        return (true, "");
+    }
+
+    function addErc20Asset(IERC20 _erc20token) public {
+        assetTable[address(_erc20token)] = true;
+    }
+
+    function increaseNonce(address account) internal returns (uint256) {
+        accountNonce[account] = accountNonce[account] + 1;
+        return accountNonce[account];
+    }
+
+    function getAccountNonce(address account) public view returns (uint256) {
+        return accountNonce[account];
+    }
+}

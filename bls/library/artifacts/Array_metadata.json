@@ -1,0 +1,92 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_arr",
+						"type": "address[]"
+					}
+				],
+				"name": "addressVerification",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_arr",
+						"type": "address[]"
+					}
+				],
+				"name": "addressVerification2",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Users/chenfei/tool/bridge/tec/eth/contract/library/Array.sol": "Array"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Users/chenfei/tool/bridge/tec/eth/contract/library/Array.sol": {
+			"keccak256": "0xfa5977c497643209731b3425c7e354ebe672b3f7bc8d5b67c781d052c06e4a7f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f34889074dbb9f13bd18b1d7939f488b80c59df4ac517c47ec909e63d4570745",
+				"dweb:/ipfs/QmcjEqF4xB3L3fEVfP8zYUkCS9suwGxw7q9GUFu6KX4RXT"
+			]
+		},
+		"Users/chenfei/tool/bridge/tec/eth/contract/library/SafeMath.sol": {
+			"keccak256": "0x7f1a7979ab27836d5ab3e459c87e1f011fc73e293e8b77c639cbf04f6bc6b4e7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://07aabd186c17dd422ff4abc807229eba6ad995c5efd22734a4535d27d0e463c0",
+				"dweb:/ipfs/QmNdZHziGx998HGrqWUQVXJBwL5PA1bSQJQr2rBmuLDqa7"
+			]
+		}
+	},
+	"version": 1
+}

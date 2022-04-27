@@ -1,0 +1,62 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"görli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"linkReferences": {},
+			"object": "60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220a22ca634d44b9ba52b0536f5f86fe763929c17752b5f209e09b435ddd9d679e164736f6c63430007000033",
+			"opcodes": "PUSH1 0x56 PUSH1 0x23 PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH1 0x0 BYTE PUSH1 0x73 EQ PUSH1 0x16 JUMPI INVALID JUMPDEST ADDRESS PUSH1 0x0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 LOG2 0x2C 0xA6 CALLVALUE 0xD4 0x4B SWAP12 0xA5 0x2B SDIV CALLDATASIZE CREATE2 0xF8 PUSH16 0xE763929C17752B5F209E09B435DDD9D6 PUSH26 0xE164736F6C634300070000330000000000000000000000000000 ",
+			"sourceMap": "57:2536:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220a22ca634d44b9ba52b0536f5f86fe763929c17752b5f209e09b435ddd9d679e164736f6c63430007000033",
+			"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 LOG2 0x2C 0xA6 CALLVALUE 0xD4 0x4B SWAP12 0xA5 0x2B SDIV CALLDATASIZE CREATE2 0xF8 PUSH16 0xE763929C17752B5F209E09B435DDD9D6 PUSH26 0xE164736F6C634300070000330000000000000000000000000000 ",
+			"sourceMap": "57:2536:0:-:0;;;;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "17200",
+				"executionCost": "97",
+				"totalCost": "17297"
+			},
+			"internal": {
+				"getRollupHash(struct BridgeLibrary2.Rollup memory,bytes memory)": "infinite",
+				"getTransactionsHash(struct BridgeLibrary2.Transaction memory[] memory,bytes memory)": "infinite",
+				"isValidSignature(bytes32,address,bytes memory)": "infinite",
+				"verificationRollup(struct BridgeLibrary2.Rollup memory,bytes memory)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}

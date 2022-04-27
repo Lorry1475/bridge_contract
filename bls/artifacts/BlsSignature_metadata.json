@@ -1,0 +1,234 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_p1",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_p2",
+						"type": "bytes"
+					}
+				],
+				"name": "addOnCurveE1",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "aggregatedPublicKey",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_newKey",
+						"type": "bytes32"
+					}
+				],
+				"name": "remakeAggregatedPublicKey",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "verified",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_p",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "verifyAggregatedHash",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_aggregatedPublicKey",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_partPublicKey",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_message",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_partSignature",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_signersBitmask",
+						"type": "uint256"
+					}
+				],
+				"name": "verifyMultisignature",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_publicKey",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_message",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_signature",
+						"type": "bytes"
+					}
+				],
+				"name": "verifySignature",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_publicKey",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_message",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_signature",
+						"type": "bytes"
+					}
+				],
+				"name": "verifySignaturePoint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tool/bridge/tec/eth/contract/BlsSignature.sol": "BlsSignature"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"tool/bridge/tec/eth/contract/BlsSignature.sol": {
+			"keccak256": "0x9d461c5a853ddd8ef3424d71cd191fb2d58ed15153af7d370586504717cfaa00",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://b47ce51c691c8e90ecf703d9de4087cb878fc31cd0cfcaefcd4e25f9d1699914",
+				"dweb:/ipfs/QmeP6P2J1B5TK1wH4emcWQYNdohthexnZh7qD44BjEPncK"
+			]
+		},
+		"tool/bridge/tec/eth/contract/BlsSignatureVerification.sol": {
+			"keccak256": "0x8d481620322922904579a2f2fbb60b47ecc5763b6ee0bdfb98f05f8fa0711d1f",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://eb5021bfc4bd084bca058c148b80a2ede2d7caa5d08d2bd4ddfb8ce15223f700",
+				"dweb:/ipfs/QmZiXwuVq5mPNjA6de5oX8FW7mogUPsWdrhvvY4uCzr92j"
+			]
+		},
+		"tool/bridge/tec/eth/contract/ModUtils.sol": {
+			"keccak256": "0x1db3ad62f4735b655a3c5e56854fc671f77676a5717a92d91b99444c9ab5f0ea",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://80a2966ff15a493c737e542b8a5aad77f529a7a54a58eb9c5debe14eb7684a57",
+				"dweb:/ipfs/QmP6aQxrfrMQRzTcS7yBkJb5FbcCMWfiCgJNi4J9zQ3Fzz"
+			]
+		}
+	},
+	"version": 1
+}
